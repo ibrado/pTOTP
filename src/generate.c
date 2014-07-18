@@ -48,12 +48,21 @@ int generateCode(const uint8_t *secret, const uint8_t secret_length, unsigned lo
   }
 
   // Compute the HMAC_SHA1 of the secrete and the challenge.
-  uint8_t hash[SHA1_DIGEST_LENGTH];
-  hmac_sha1(secret, secret_length, challenge, 8, hash, SHA1_DIGEST_LENGTH);
+  uint8_t hash[SHA256_DIGEST_LENGTH];
+  int offset;
 
-  // Pick the offset where to sample our hash value for the actual verification
-  // code.
-  int offset = hash[SHA1_DIGEST_LENGTH - 1] & 0xF;
+  if (secret_length > 48) {
+    hmac_sha256(secret, secret_length, challenge, 8, hash, SHA256_DIGEST_LENGTH);
+    offset = hash[SHA256_DIGEST_LENGTH - 1] & 0xF;
+
+  } else {
+
+    hmac_sha1(secret, secret_length, challenge, 8, hash, SHA1_DIGEST_LENGTH);
+
+    // Pick the offset where to sample our hash value for the actual verification
+    // code.
+    offset = hash[SHA1_DIGEST_LENGTH - 1] & 0xF;
+  }
 
   // Compute the truncated hash in a byte-order independent loop.
   unsigned int truncatedHash = 0;
