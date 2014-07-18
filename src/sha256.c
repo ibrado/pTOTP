@@ -184,7 +184,7 @@ void sha256_process( sha256_context *ctx, uint8 data[64] )
     ctx->state[7] += H;
 }
 
-void sha256_update( sha256_context *ctx, uint8 *input, uint32 length )
+void sha256_update( sha256_context *ctx, const uint8_t *input, int length );
 {
     uint32 left, fill;
 
@@ -231,7 +231,7 @@ static uint8 sha256_padding[64] =
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
 
-void sha256_finish( sha256_context *ctx, uint8 digest[32] )
+void sha256_finish( sha256_context *ctx, uint8_t digest[32] );
 {
     uint32 last, padn;
     uint32 high, low;
