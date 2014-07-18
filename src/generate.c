@@ -37,6 +37,7 @@
 #include <string.h>
 #include "generate.h"
 #include "sha1.h"
+#include "sha256.h"
 #include "hmac.h"
 
 #define VERIFICATION_CODE_MODULUS (1000*1000) // Six digits
