@@ -9,8 +9,8 @@
 #define uint32 unsigned long int
 #endif
 
-#define SHA1_BLOCKSIZE     64
-#define SHA1_DIGEST_LENGTH 32
+#define SHA256_BLOCKSIZE 64
+#define SHA256_DIGEST_LENGTH 32
 
 typedef struct
 {
@@ -21,8 +21,8 @@ typedef struct
 sha256_context;
 
 void sha256_starts( sha256_context *ctx );
-void sha256_update( sha256_context *ctx, const uint8_t *input, int length );
-void sha256_finish( sha256_context *ctx, uint8_t digest[32] );
+void sha256_update( sha256_context *ctx, uint8 *input, uint32 length );
+void sha256_finish( sha256_context *ctx, uint8 digest[32] );
 
 #endif /* sha256.h */
 

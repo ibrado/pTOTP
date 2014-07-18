@@ -77,8 +77,8 @@ void hmac_sha1(const uint8_t *key, int keyLength,
   memset(tmp_key, 0, sizeof(tmp_key));
 }
 
-void hmac_sha256(const uint8_t *key, int keyLength,
-               const uint8_t *data, int dataLength,
+void hmac_sha256(uint8_t *key, int keyLength,
+               uint8_t *data, unsigned int dataLength,
                uint8_t *result, int resultLength) {
   sha256_context ctx;
   uint8_t hashed_key[SHA256_DIGEST_LENGTH];
