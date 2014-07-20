@@ -25,8 +25,8 @@ $(document).ready(function(e) {
     }
 
     // This is pretty terrible...
-    if (!window.location.href.match(/ver=1\.2\.0/)) {
-        alert("You're running an old verison of Pebble Authenticator - please update!");
+    if (!window.location.href.match(/-v1\.2\.0/)) {
+        alert("You're running an old version of Pebble Authenticator - please update!");
         ConfigurationSave();
         return;
     }
