@@ -36,4 +36,4 @@
 
 #include "pebble.h"
 
-int generateCode(const uint8_t *key, const uint8_t key_length, unsigned long tm);
+int generateCode(uint8_t *key, uint8_t key_length, unsigned long tm);
