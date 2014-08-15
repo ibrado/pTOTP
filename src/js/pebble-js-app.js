@@ -36,7 +36,7 @@ var QueueAppMessage = function(message) {
 };
 
 var AMQueueFail = function(txn) {
-    console.log("AM transmit failed: " + txn.data.error.message + ", continuing");
+    console.log("AM transmit failed: " + txn.error.message + ", continuing");
     AMTransmitQueue();
 };
 
